@@ -1,0 +1,13 @@
+clear all;
+close all;
+clc;
+alpha=readmatrix('alpha_data.txt');
+pow_stat=1*rand(2000,4)+0.5;
+ineff_UE=4;
+X=alpha.*pow_stat/ineff_UE;
+X=X-1;
+Y=X/exp(1);
+W=lambertw(0,Y);
+X=X./W;
+p_avg=(X-1)./alpha;
+%writematrix(p_avg,'optimal_vals.txt');
